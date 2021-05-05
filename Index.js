@@ -9,8 +9,8 @@ const job_Routes = require('./Routes/Jobs/JobsRoutes');
 
 app.use(
 	cors({
-		//origin:['https://elegant-wozniak-afb7d4.netlify.app']
-		origin: ['http://localhost:3000'],
+		origin: ['https://elegant-wozniak-afb7d4.netlify.app'],
+		//origin: ['http://localhost:3000'],
 		methods: ['GET', 'POST', 'PUT', 'DELETE'],
 		credentials: true,
 	})
@@ -27,10 +27,12 @@ app.use(
 		cookie: { maxAge: 24 * 60 * 60 * 1000 },
 	})
 );
-
+app.get('/', (req, res) => {
+	res.send('Hellooooo!');
+});
 app.use('/jobSeeker', job_Seeker_Routes);
 app.use('/jobs', job_Routes);
 
 app.listen(process.env.PORT || 3001, () => {
-	console.log('App is Running on port 3001');
+	console.log('App is Running!');
 });

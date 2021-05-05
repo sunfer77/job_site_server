@@ -6,7 +6,7 @@ const job_Seeker_signUp = require('../../controllers/JobSeeker/Job_Seeker_signup
 const Create_CV = require('../../controllers/JobSeeker/CreateCV');
 const CV_Update = require('../../controllers/JobSeeker/CV_Update');
 const getUserData = require('../../controllers/JobSeeker/Job_Seeker_data');
-const logout = require('../../controllers/JobSeeker/Test');
+const logout = require('../../controllers/JobSeeker/LogoutUser');
 
 // Validation Middle-wares
 const form_Validation = require('../../middleWare/FormValidation');
