@@ -4,11 +4,14 @@
   "description": "JobPortal",
   "main": "Index.js",
   "scripts": {
-    "start" : "node index.js"
-    
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "author": "SunethFernando",
   "license": "ISC",
+   "engines": {
+    "node": "12.16.3"
+  },
   "dependencies": {
     "bcrypt": "^5.0.1",
     "body-parser": "^1.19.0",
