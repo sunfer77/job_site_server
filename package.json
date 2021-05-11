@@ -1,12 +1,11 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "start" : "node index.js",
-  
   "description": "JobPortal",
   "main": "Index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start" : "node index.js"
+    
   },
   "author": "SunethFernando",
   "license": "ISC",
