@@ -29,7 +29,9 @@ app.use(
 		cookie: { maxAge: 24 * 60 * 60 * 1000 },
 	})
 );
-
+app.get('/', (req, res) => {
+	res.send('hello');
+});
 app.use('/jobSeeker', job_Seeker_Routes);
 app.use('/jobs', job_Routes);
 
