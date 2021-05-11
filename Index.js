@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express');
 const app = express();
 
@@ -21,7 +23,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(
 	session({
 		key: '_session',
-		secret: 'session',
+		secret: process.env.SECRET,
 		resave: false,
 		saveUninitialized: false,
 		cookie: { maxAge: 24 * 60 * 60 * 1000 },
