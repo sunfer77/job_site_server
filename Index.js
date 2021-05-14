@@ -1,4 +1,4 @@
-require('dotenv').config();
+
 
 const express = require('express');
 const app = express();
@@ -23,14 +23,14 @@ app.use(express.urlencoded({ extended: true }));
 app.use(
 	session({
 		key: '_session',
-		secret: process.env.SECRET,
+		secret: 'secret',
 		resave: false,
 		saveUninitialized: false,
 		cookie: { maxAge: 24 * 60 * 60 * 1000 },
 	})
 );
 app.get('/', (req, res) => {
-	res.send('hello');
+	res.send('hello baby');
 });
 app.use('/jobSeeker', job_Seeker_Routes);
 app.use('/jobs', job_Routes);
