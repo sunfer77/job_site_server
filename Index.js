@@ -6,14 +6,12 @@ const session = require('express-session');
 
 const job_Seeker_Routes = require('./Routes/Job_Seeker/jobSeekerRoutes');
 const job_Routes = require('./Routes/Jobs/JobsRoutes');
-app.use(cors());
 
 app.use(
 	cors({
-		origin: '*',
-		methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-		preflightContinue: false,
-		optionsSuccessStatus: 204,
+		origin: 'https://elegant-wozniak-afb7d4.netlify.app',
+		methods: ['GET', 'POST', 'PUT', 'DELETE'],
+		credentials: true,
 	})
 );
 app.use(express.json());
@@ -29,7 +27,7 @@ app.use(
 	})
 );
 app.get('/', (req, res) => {
-	res.send('hello suneth');
+	res.send('hello baby');
 });
 app.use('/jobSeeker', job_Seeker_Routes);
 app.use('/jobs', job_Routes);
