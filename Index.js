@@ -10,9 +10,9 @@ app.use(cors());
 
 app.use(
 	cors({
-		origin: 'https://elegant-wozniak-afb7d4.netlify.app',
+		origin: '*',
 		methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-		credentials: true,
+		preflightContinue: false,
 		optionsSuccessStatus: 204,
 	})
 );
