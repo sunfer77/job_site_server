@@ -10,7 +10,6 @@ const job_Routes = require('./Routes/Jobs/JobsRoutes');
 app.use(
 	cors({
 		origin: ['https://elegant-wozniak-afb7d4.netlify.app'],
-		//origin: ['http://localhost:3002'],
 		methods: ['GET', 'POST', 'PUT', 'DELETE'],
 		credentials: true,
 	})
