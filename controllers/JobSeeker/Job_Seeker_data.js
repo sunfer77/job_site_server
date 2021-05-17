@@ -9,6 +9,7 @@ const getUserData = (req, res) => {
 				throw err;
 			} else {
 				if (result.length > 0) {
+					res.header('Access-Control-Allow-Origin', '*');
 					res.send({ ...result[0], CvCreated: true });
 				} else {
 					res.send({ CvCreated: false });
