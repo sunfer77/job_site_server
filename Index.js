@@ -12,6 +12,8 @@ app.use(
 		origin: 'https://elegant-wozniak-afb7d4.netlify.app',
 		methods: ['GET', 'POST', 'PUT', 'DELETE'],
 		credentials: true,
+		allowedHeaders: ['Content-Type', 'Authorization'],
+		exposedHeaders: ['Content-Range', 'X-Content-Range'],
 	})
 );
 app.use(express.json());
@@ -27,7 +29,7 @@ app.use(
 	})
 );
 app.get('/', (req, res) => {
-	res.send('hello baby');
+	res.send('hello Kavith');
 });
 app.use('/jobSeeker', job_Seeker_Routes);
 app.use('/jobs', job_Routes);
