@@ -15,7 +15,21 @@ router.post('/login', login.job_Seeker_login);
 router.post('/sign_up', form_Validation(), job_Seeker_signUp);
 router.post('/createCV', CV_Validation(), Create_CV);
 router.put('/updateCV', CV_Validation(), CV_Update);
-router.get('/login', login.job_seeker_session);
+router.get(
+	'/login',
+	app.use(function (req, res, next) {
+		res.header(
+			'Access-Control-Allow-Origin',
+			'https://elegant-wozniak-afb7d4.netlify.app'
+		);
+		res.header(
+			'Access-Control-Allow-Headers',
+			'Origin, X-Requested-With, Content-Type, Accept'
+		);
+		next();
+	}),
+	login.job_seeker_session
+);
 router.get('/logout', logOut);
 router.get('/:id', getUserData);
 
