@@ -6,6 +6,7 @@ const session = require('express-session');
 
 const job_Seeker_Routes = require('./Routes/Job_Seeker/jobSeekerRoutes');
 const job_Routes = require('./Routes/Jobs/JobsRoutes');
+app.use(cors());
 
 app.use(function (req, res, next) {
 	res.header(
@@ -19,7 +20,6 @@ app.use(function (req, res, next) {
 	next();
 });
 
-app.use(cors());
 // app.use(
 // 	cors({
 // 		origin: ['https://elegant-wozniak-afb7d4.netlify.app'],
