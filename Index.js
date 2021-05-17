@@ -1,5 +1,3 @@
-
-
 const express = require('express');
 const app = express();
 
@@ -9,14 +7,27 @@ const session = require('express-session');
 const job_Seeker_Routes = require('./Routes/Job_Seeker/jobSeekerRoutes');
 const job_Routes = require('./Routes/Jobs/JobsRoutes');
 
-app.use(
-	cors({
-		origin: ['https://elegant-wozniak-afb7d4.netlify.app'],
-		//origin: ['http://localhost:3002'],
-		methods: ['GET', 'POST', 'PUT', 'DELETE'],
-		credentials: true,
-	})
-);
+app.use(function (req, res, next) {
+	res.header(
+		'Access-Control-Allow-Origin',
+		'https://elegant-wozniak-afb7d4.netlify.app'
+	);
+	res.header(
+		'Access-Control-Allow-Headers',
+		'Origin, X-Requested-With, Content-Type, Accept'
+	);
+	next();
+});
+
+app.use(cors());
+// app.use(
+// 	cors({
+// 		origin: ['https://elegant-wozniak-afb7d4.netlify.app'],
+// 		//origin: ['http://localhost:3002'],
+// 		methods: ['GET', 'POST', 'PUT', 'DELETE'],
+// 		credentials: true,
+// 	})
+// );
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
