@@ -29,7 +29,7 @@ app.use(
 	})
 );
 app.get('/', (req, res) => {
-	res.send('hello baby');
+	res.send('hello suneth');
 });
 app.use('/jobSeeker', job_Seeker_Routes);
 app.use('/jobs', job_Routes);
