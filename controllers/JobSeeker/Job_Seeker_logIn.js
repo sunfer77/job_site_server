@@ -18,6 +18,7 @@ const job_Seeker_login = (req, res) => {
 					}
 					if (response) {
 						// assign user data to req.session.user object
+						res.header('Access-Control-Allow-Origin', 'true');
 						req.session.user = result;
 						res.send({
 							isAuthenticated: true,
