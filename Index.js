@@ -9,11 +9,8 @@ const job_Routes = require('./Routes/Jobs/JobsRoutes');
 
 app.use(
 	cors({
-		origin: 'https://elegant-wozniak-afb7d4.netlify.app',
+		origin: false,
 		methods: ['GET', 'POST', 'PUT', 'DELETE'],
-		credentials: true,
-		allowedHeaders: ['Content-Type', 'Authorization'],
-		exposedHeaders: ['Content-Range', 'X-Content-Range'],
 	})
 );
 app.use(express.json());
