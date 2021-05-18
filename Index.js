@@ -28,6 +28,7 @@ const job_Routes = require('./Routes/Jobs/JobsRoutes');
 app.use(
 	cors({
 		origin: 'https://thirsty-khorana-0ae121.netlify.app',
+		//origin: 'http://localhost:3000',
 		methods: 'GET, POST, PUT, DELETE',
 		credentials: true,
 	})
@@ -41,7 +42,7 @@ app.use(
 		secret: 'secret',
 		resave: false,
 		saveUninitialized: false,
-		cookie: { maxAge: 24 * 60 * 60 * 1000 },
+		cookie: { secure: true, maxAge: 24 * 60 * 60 * 1000 },
 	})
 );
 app.get('/', (req, res) => {
