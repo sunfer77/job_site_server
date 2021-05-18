@@ -1,13 +1,42 @@
 const express = require('express');
 const app = express();
 
-const cors = require('cors');
+//const cors = require('cors');
 const session = require('express-session');
 
 const job_Seeker_Routes = require('./Routes/Job_Seeker/jobSeekerRoutes');
 const job_Routes = require('./Routes/Jobs/JobsRoutes');
+app.use(function (req, res, next) {
+	// Website you wish to allow to connect
+	res.setHeader(
+		'Access-Control-Allow-Origin',
+		'https://elegant-wozniak-afb7d4.netlify.app'
+	);
 
-app.use(cors());
+	// Request methods you wish to allow
+	res.setHeader(
+		'Access-Control-Allow-Methods',
+		'GET, POST, OPTIONS, PUT, PATCH, DELETE'
+	);
+
+	// Request headers you wish to allow
+	res.setHeader(
+		'Access-Control-Allow-Headers',
+		'X-Requested-With,content-type'
+	);
+
+	// Set to true if you need the website to include cookies in the requests sent
+	// to the API (e.g. in case you use sessions)
+	res.setHeader('Access-Control-Allow-Credentials', true);
+
+	// Pass to next layer of middleware
+	next();
+});
+
+// app.use(cors(
+// 	{origin:'https://elegant-wozniak-afb7d4.netlify.app/',
+// }
+// ));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
