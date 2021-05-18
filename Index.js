@@ -7,12 +7,7 @@ const session = require('express-session');
 const job_Seeker_Routes = require('./Routes/Job_Seeker/jobSeekerRoutes');
 const job_Routes = require('./Routes/Jobs/JobsRoutes');
 
-app.use(
-	cors({
-		origin: false,
-		methods: ['GET', 'POST', 'PUT', 'DELETE'],
-	})
-);
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -26,7 +21,7 @@ app.use(
 	})
 );
 app.get('/', (req, res) => {
-	res.send('hello Kavith');
+	res.send('hello Suneth');
 });
 app.use('/jobSeeker', job_Seeker_Routes);
 app.use('/jobs', job_Routes);
