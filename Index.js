@@ -27,7 +27,7 @@ const job_Routes = require('./Routes/Jobs/JobsRoutes');
 
 app.use(
 	cors({
-		origin: 'http://localhost:3000',
+		origin: 'https://thirsty-khorana-0ae121.netlify.app',
 		methods: 'GET, POST, PUT, DELETE',
 		credentials: true,
 	})
