@@ -42,7 +42,7 @@ app.use(
 		secret: 'secret',
 		resave: false,
 		saveUninitialized: false,
-		cookie: { secure: true, maxAge: 24 * 60 * 60 * 1000 },
+		cookie: { secure: true, httpOnly: true, maxAge: 24 * 60 * 60 * 1000 },
 	})
 );
 app.get('/', (req, res) => {
