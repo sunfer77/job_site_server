@@ -41,12 +41,12 @@ app.use(
 		key: '_session',
 		secret: 'secret',
 		resave: false,
-		saveUninitialized: false,
+		saveUninitialized: true,
 		cookie: { secure: true, httpOnly: true, maxAge: 24 * 60 * 60 * 1000 },
 	})
 );
 app.get('/', (req, res) => {
-	res.send('hello Suneth_Fernando');
+	res.send('hello kavith_Fernando');
 });
 app.use('/jobSeeker', job_Seeker_Routes);
 app.use('/jobs', job_Routes);
