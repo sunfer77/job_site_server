@@ -7,7 +7,8 @@ const mysql = require('mysql');
 // 	database: process.env.DATABASE,
 // });
 
-const db = mysql.createConnection({
+const db = mysql.createPool({
+	connectionLimit: 100,
 	host: 'www.db4free.net',
 	user: 'suneth_fernando',
 	password: 'jobportal',
