@@ -1,6 +1,5 @@
 const express = require('express');
 const app = express();
-//const cors = require('cors');
 const session = require('express-session');
 
 const job_Seeker_Routes = require('./Routes/Job_Seeker/jobSeekerRoutes');
@@ -8,13 +7,6 @@ const job_Routes = require('./Routes/Jobs/JobsRoutes');
 
 const port = process.env.PORT || 3001;
 
-app.set('trust proxy', 1);
-// app.use(
-// 	cors({
-// 		//origin: 'https://job-app-react.herokuapp.com',
-// 		credentials: true,
-// 	})
-// );
 app.use(express.static('public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -25,10 +17,8 @@ app.use(
 		secret: 'secret',
 		resave: false,
 		saveUninitialized: false,
-		unset: 'destroy',
 
 		cookie: {
-			sameSite: 'Lax',
 			httpOnly: true,
 			secure: true,
 			maxAge: 24 * 60 * 60 * 1000,
