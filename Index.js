@@ -17,8 +17,10 @@ app.use(
 		secret: 'secret',
 		resave: false,
 		saveUninitialized: false,
+		unset: 'destroy',
 
 		cookie: {
+			sameSite: 'Lax',
 			httpOnly: true,
 			secure: true,
 			maxAge: 24 * 60 * 60 * 1000,
