@@ -11,10 +11,11 @@ const port = process.env.PORT || 3001;
 app.set('trust proxy', 1);
 app.use(
 	cors({
-		origin: 'https://thirsty-khorana-0ae121.netlify.app',
+		origin: 'http://localhost:3001',
 		credentials: true,
 	})
 );
+app.use(express.static('public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -34,9 +35,7 @@ app.use(
 		},
 	})
 );
-app.get('/', (req, res) => {
-	res.send('hello kavith_Fernando');
-});
+
 app.use('/jobSeeker', job_Seeker_Routes);
 app.use('/jobs', job_Routes);
 
