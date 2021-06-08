@@ -18,7 +18,6 @@ const job_Seeker_login = (req, res) => {
 					}
 					if (response) {
 						// assign user data to req.session.user object
-
 						req.session.user = result;
 						res.send({
 							isAuthenticated: true,
