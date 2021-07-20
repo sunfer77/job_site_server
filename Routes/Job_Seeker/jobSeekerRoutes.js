@@ -11,20 +11,23 @@ const logOut = require("../../controllers/JobSeeker/LogoutUser");
 const googleAuth = require("../../controllers/JobSeeker/LoginWithGoogle");
 const deleteUser = require("../../controllers/JobSeeker/DeleteUser");
 
-// Validation Middle-wares
+// Validation midlewares
 const form_Validation = require("../../middleWare/FormValidation");
 const CV_Validation = require("../../middleWare/CreateCV_Validation");
+
+// isAuthenticated checks whether the current is authenticated.
+const isAuthenticated = require("../../middleWare/IsUserAuthenticated");
 
 router.post("/sign_up", form_Validation(), job_Seeker_signUp);
 router.post("/login", job_Seeker_login);
 router.post("/loginWithGoogle", googleAuth);
 router.post("/createCV", CV_Validation(), Create_CV);
 router.put("/updateCV", CV_Validation(), CV_Update);
-// Responds to the request from "UserContext.js" to check if the current user has session!
-router.get("/userData", job_seeker_session);
+router.get("/userData", isAuthenticated, job_seeker_session);
 router.get("/logout", logOut);
 router.delete("/deleteUser/:id", deleteUser);
-// Keep always at the bottom ----> "router.get("/user/:id", getUserData);"
-router.get("/user/:id", getUserData);
+
+// Keep this route always at the bottom
+router.get("/user/:id", isAuthenticated, getUserData);
 
 module.exports = router;
