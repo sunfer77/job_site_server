@@ -20,19 +20,23 @@ app.use(
 app.use(
   session({
     key: "_session",
-    secret: "process.env.SESSION_SECRET",
-    resave: false,
+      secret: "process.env.SESSION_SECRET",
+      resave: false,
     saveUninitialized: true,
-    cookie: {
-      httpOnly: true,
-      maxAge: 24 * 60 * 60 * 1000,
-    },
-  })
+      cookie: {
+        httpOnly: true,
+        maxAge: 24 * 60 * 60 * 1000,
+      },
+    })
 );
 
 app.use(express.static("public"));
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(
+  express.urlencoded({
+    extended: true,
+  })
+);
 
 app.use("/jobSeeker", job_Seeker_Routes);
 app.use("/jobs", job_Routes);

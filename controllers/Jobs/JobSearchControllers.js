@@ -1,18 +1,21 @@
 const db = require("../../db");
 
 const job_search_controller = (req, res) => {
-  const { jobName, city } = req.body;
+  const {
+    jobName,
+    city
+  } = req.body;
 
   const jobSearch = `SELECT
 	jobs.jobId,
 	jobs.companyId,
 	jobs.jobName,
 	jobs.contractType,
-	jobs.sector,
-	jobs.city,
-	jobs.jobDescription,
-	company.companyName,
-	company.email
+	  jobs.sector,
+	  jobs.city,
+	  jobs.jobDescription,
+	  company.companyName,
+	  company.email
 	FROM jobs
 	JOIN company ON company.companyId = jobs.companyId
 	WHERE  jobs.jobName LIKE '%${jobName}%' AND jobs.city = '${city}';`;
@@ -22,18 +25,23 @@ const job_search_controller = (req, res) => {
   // ----------------------------------------------------
 
   db.query(jobSearch, (err, result) => {
-    try {
-      if (err) {
-        throw err;
-      } else if (result.length > 0) {
-        res.status(200).json(result);
-      } else {
-        res.send({ NojobsFound: true, jobName: jobName, city: city });
-      }
-    } catch (error) {
-      res.send(error);
-    }
-  });
+        try {
+          if (err) {
+            throw err;
+          } else if (result.length > 0) {
+            res.status(200).json(result);
+          } else {
+        res.send({
+          NojobsFound: true,
+          jobName: jobName,
+          city: city
+        });
+        }
+        }
+        catch (error) {
+          res.send(error);
+        }
+        });
 };
 
 // ----------------------------------------------------
@@ -41,17 +49,19 @@ const job_search_controller = (req, res) => {
 // ----------------------------------------------------
 
 const jobs_by_id = (req, res) => {
-  const { id } = req.params;
+  const {
+    id
+  } = req.params;
 
   let jobs = `SELECT
 	jobs.jobId,
 	jobs.companyId,
 	jobs.jobName,
 	jobs.contractType,
-	jobs.sector,
-	jobs.city,
-	jobs.jobDescription,
-	company.companyName,
+	  jobs.sector,
+	  jobs.city,
+	  jobs.jobDescription,
+	  company.companyName,
 	company.companyId,
 	company.email
 	FROM jobs
@@ -76,7 +86,9 @@ const jobs_by_id = (req, res) => {
 // ----------------------------------------------------
 
 const jobs_by_companyID = (req, res) => {
-  const { id } = req.params;
+  const {
+    id
+  } = req.params;
   const jobsByCompany = `SELECT * FROM jobs WHERE companyId = '${id}' ;`;
   try {
     db.query(jobsByCompany, (err, result) => {
